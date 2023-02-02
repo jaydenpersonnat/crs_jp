@@ -73,3 +73,6 @@ let append (lst1 : int list) (lst2 : int list):
 
 let remove_at (k : int) (lst : string list): string list = 
   failwith "not yet implemented" ;; 
+
+
+(* Solution will be posted right after lab *)
