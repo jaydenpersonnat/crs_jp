@@ -1,0 +1,8 @@
+"Rule: ocaml: ml -> cmo & cmi (%=exercises )": "\204\146uM\0261\231\002\227\165\241\217\194\218\148|"
+"Resource: /Users/jaydenpersonnat/Desktop/S23/cs51/code_reviews/cr1/soln/tests.ml": "\182\224J\017t\200\006&`\228\213\231QV;\\"
+"Rule: ocaml dependencies ml (%=exercises )": "D\185\018\158\171\241\0186\132\229^`kF\184N"
+"Rule: ocaml: ml -> cmo & cmi (%=tests )": "{\142k)Z\159u\025j\137\\\141>\195\218\229"
+"Resource: /Users/jaydenpersonnat/Desktop/S23/cs51/code_reviews/cr1/soln/exercises.ml": "\159\198P\190\242|\251\149\189\221\000\196\002\203f&"
+"Rule: ocaml dependencies ml (%=tests )": "\156\225\145\141\006\222\156~x\176\128\030\220b\"7"
+"Rule: ocaml: cmo* -> byte (%=tests )": "\006t\158\249\159h]\245\143\187\206Mp\154\158\148"
+"Rule: ocaml: cmo* -> byte (%=exercises )": "\188W+\"\2559\215\130zXW\202\136\236\221E"
