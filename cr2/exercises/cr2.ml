@@ -91,7 +91,7 @@ let last (xs: 'a list) : 'a option =
 with the key K and return an option of that value. 
 If the key does not exist in the list, return None. *) 
 
-let search (K : 'a) (xs : ('a * 'b) list) : 'b option = 
+let search (k : 'a) (xs : ('a * 'b) list) : 'b option = 
   failwith "not yet implemented" ;; 
 
 
