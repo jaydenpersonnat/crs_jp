@@ -76,3 +76,15 @@ the values in the left subtree, in turn before the values in the right subtree. 
 let preorder (tr : 'a bintree) : 'a list = 
   failwith "not yet implemented" ;; 
 
+(* Define a function map that performs an operation on every node in the binary ree
+and returns a binary tree *)
+let mapbt (f : 'a -> 'b) (tr : 'a bintree) : 'b bintree = 
+  failwith "not yet implemented" ;; 
+
+
+
+(* Define a function foldbt walks the entire tree and performs an operation on 
+   each node and the accumulator. Consider why the type of foldbt is defined like 
+   so! *)
+let foldbt (f: 'a -> 'b -> 'b -> 'b) (acc : 'b) (tr : 'a bintree) : 'b = 
+  "failwith not yet implemented" ;;

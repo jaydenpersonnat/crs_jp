@@ -1,6 +1,6 @@
-(* Test for Code Review 1 Exercises *)
 
-open Exercises ;; 
+
+open Cr2 ;; 
 
 (* The Absbook module contains simple functions for unit testing:
    `unit_test` and `unit_test_within`. *)
@@ -15,13 +15,9 @@ let length_test () =
   unit_test (length [1;2;3;4;5; -2] = 6) "list length 6"; 
 ;; 
 
-let sum_test () = 
-  unit_test (sum [1;2;3;4] = 10) "sum of list"; 
+
+let test () = 
+  length_test () 
 ;; 
 
-let test_all () = 
-  length_test ();
-  sum_test ();  ;; 
-
-test_all () ;; 
-    
+test () ;; 

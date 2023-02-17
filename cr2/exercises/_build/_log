@@ -1,0 +1,12 @@
+### Starting build.
+# Target: tests.ml.depends, tags: { package(CS51Utils), package(graphics), warn(A-4-33-40-41-42-43-34-44), extension:ml, file:tests.ml, ocaml, ocamldep, quiet, strict-sequence, thread, traverse, use_str }
+ocamlfind ocamldep -package graphics -package CS51Utils -modules tests.ml > tests.ml.depends
+# Target: cr2.ml.depends, tags: { package(CS51Utils), package(graphics), warn(A-4-33-40-41-42-43-34-44), extension:ml, file:cr2.ml, ocaml, ocamldep, quiet, strict-sequence, thread, traverse, use_str }
+ocamlfind ocamldep -package graphics -package CS51Utils -modules cr2.ml > cr2.ml.depends # cached
+# Target: cr2.cmo, tags: { package(CS51Utils), package(graphics), warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:cmo, extension:ml, file:cr2.cmo, file:cr2.ml, implem, ocaml, quiet, strict-sequence, thread, traverse, use_str }
+ocamlfind ocamlc -c -thread -strict-sequence -package graphics -package CS51Utils -w A-4-33-40-41-42-43-34-44 -o cr2.cmo cr2.ml # cached
+# Target: tests.cmo, tags: { package(CS51Utils), package(graphics), warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:cmo, extension:ml, file:tests.cmo, file:tests.ml, implem, ocaml, quiet, strict-sequence, thread, traverse, use_str }
+ocamlfind ocamlc -c -thread -strict-sequence -package graphics -package CS51Utils -w A-4-33-40-41-42-43-34-44 -o tests.cmo tests.ml
+# Target: tests.byte, tags: { package(CS51Utils), package(graphics), warn(A-4-33-40-41-42-43-34-44), byte, dont_link_with, extension:byte, file:tests.byte, link, ocaml, program, quiet, strict-sequence, thread, traverse, use_str }
+ocamlfind ocamlc -linkpkg str.cma -thread -package graphics -package CS51Utils cr2.cmo tests.cmo -o tests.byte
+# Compilation successful.

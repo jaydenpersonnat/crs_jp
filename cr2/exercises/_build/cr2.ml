@@ -1,4 +1,4 @@
-(* Lab Exercises for Jayden's Code Review 2 - 2/10/2023 *)
+(* Lab Exercises for Jayden's Code Review 1 - 2/10/2023 *)
 
 
 (* Defining Records *)
@@ -29,20 +29,7 @@ let point_pair_to_recd2 (x, y: point_pair) : point_recd =
 (* Exercise: Define a function floats_of_int that accepts a list of integers 
 and converts it to a list of floating-point numbers *) 
 let floats_of_int : int list -> float list = 
-  List.map (float_of_int) ;;  
-
-(* 
-  List.map 
-  ('a -> 'b) -> 'a list -> 'b list 
-
-  List.map f 
-  'a list -> 'b list 
-
-int list -> float list 
-
-float_of_int 
-int -> float 
-*)
+  List.map (float_of_int)  ;;  
 
 (* Exercise: Define a function invert_pairs that accepts a list of point_pairs 
 and returns a list of those pairs with their x and y values inverted. *)
@@ -52,17 +39,21 @@ let invert_pairs (xs: point_pair list) : point_pair list =
 (* Exercise: Define a function positive_pairs that accepts a list of point_pairs 
 and returns a list of only those pairs whose x and y values are both positive. *) 
 let positive_pairs : point_pair list -> point_pair list =
-  List.filter (fun (x, y) -> x > 0 && y > 0) ;;
+  List.filter (fun (x,y) -> x > 0 && y > 0) ;;
 
 (* Exercise: Using List.fold_right, define a function length that returns the 
 length of a list of elements. *)
 let length (xs : 'a list) : int = 
-  failwith "not yet implemented" ;; 
+  List.fold_right (fun _elt acc -> succ acc)  xs 0 ;; 
 
 (* Exercise: Using List.fold_left, define a function reverse that reverses a list 
 of elements. *) 
 let reverse (xs : 'a list) : 'a list = 
   failwith "not yet implemented" ;; 
+
+let f = fun x y z -> x + y + z ;;
+let f x y z = x + y + z ;; 
+let f = fun x -> fun y -> fun z -> x + y + z ;;
 
 (* Currying *) 
 let curry (uncurried : 'a * 'b -> 'c) : 'a -> 'b -> 'c = 
@@ -74,7 +65,9 @@ let uncurry (curried: 'a -> 'b -> 'c) : 'a * 'b -> 'c =
 (* Exercise: Write a function increment_opt that increments an int option value 
 by 1. If the value is None, the function should return the value unchanged. *)
 let increment_opt (x : int option) : int option = 
-  failwith "not yet implemented" ;; 
+  match x with 
+  | None -> None 
+  | Some v -> Some (succ v) ;; 
 
 (* Max_List_Opt from Lab *)
 let rec max_list_opt (lst : int list): int option =
@@ -89,6 +82,7 @@ let rec max_list_opt (lst : int list): int option =
 let rec max_list (lst : int list) : int =
     match lst with
     | [] -> raise (Invalid_argument "max_list: empty list")
+    | [elt] -> elt 
     | hd :: tl -> max hd (max_list tl) ;;
 
   
