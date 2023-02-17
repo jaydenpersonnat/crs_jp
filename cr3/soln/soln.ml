@@ -52,10 +52,14 @@ Node (3, Node (2, Node (1, Empty, Empty), Empty),
 *)
 
 let rec insert (t : 'a bintree) (value : 'a) : 'a bintree = 
-  failwith "not yet implemented" ;; 
+  match t with 
+  | Empty -> Node (value, Empty, Empty)
+  | Node (p, left, right) -> 
+    if value < p then Node (p, insert left value, right) 
+    else Node (p, left, insert right value) ;; 
 
 let construct : 'a list -> 'a bintree = 
- failwith "not yet implemented" ;; 
+  List.fold_left (insert) Empty ;; 
 
 (* 
 
@@ -70,12 +74,17 @@ no children
 count_leaves Empty;;
 - : int = 0
 *)
-let count_leaves (tr : 'a bintree) : int = 
-  failwith "not yet implemented" ;; 
+let rec count_leaves (tr : 'a bintree) : int = 
+  match tr with 
+  | Empty -> 0 
+  | Node (_, Empty, Empty) -> 1 
+  | Node(_, left, right) -> count_leaves left + count_leaves right ;; 
 
 (* Find the sum of the nodes in a binary tree *)
-let sum_bintree (tr : 'a bintree) : int = 
-  failwith "not yet implemented" ;; 
+let rec sum_bintree (tr : 'a bintree) : int = 
+  match tr with 
+  | Empty -> 0 
+  | Node (v, left, right) -> v + sum_bintree left + sum_bintree right ;; 
 
 (* Define a function preorder of type ’a bintree -> ’a list that returns a list of all of
 the values stored in a tree in P R E O R D E R, that is, placing values stored at a node before
@@ -83,19 +92,25 @@ the values in the left subtree, in turn before the values in the right subtree. 
 # preorder int_bintree ;;
 - : int list = [16; 93; 3; 42]*)
 
-let preorder (tr : 'a bintree) : 'a list = 
-  failwith "not yet implemented" ;; 
+let rec preorder (tr : 'a bintree) : 'a list = 
+  match tr with 
+  | Empty -> [] 
+  | Node (p, left, right) -> p :: (preorder left @ preorder right) ;; 
 
 (* Define a function map that performs an operation on every node in the binary ree
 and returns a binary tree *)
-let mapbt (f : 'a -> 'b) (tr : 'a bintree) : 'b bintree = 
-  failwith "not yet implemented" ;; 
+let rec mapbt (f : 'a -> 'b) (tr : 'a bintree) : 'b bintree = 
+  match tr with 
+  | Empty -> Empty 
+  | Node (v, left, right) -> Node (f v, mapbt f left, mapbt f right) ;; 
 
 
 
 (* Define a function foldbt walks the entire tree and performs an operation on 
    each node and the accumulator. Consider why the type of foldbt is defined like 
    so! *)
-let foldbt (f: 'a -> 'b -> 'b -> 'b) (acc : 'b) (tr : 'a bintree) : 'b = 
-  "failwith not yet implemented" ;;
+let rec foldbt (f: 'a -> 'b -> 'b -> 'b) (acc : 'b) (tr : 'a bintree) : 'b = 
+  match tr with 
+  | Empty -> acc 
+  | Node (v, left, right) -> f v (foldbt f acc left) (foldbt f acc right) ;;
 
