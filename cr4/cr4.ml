@@ -16,6 +16,8 @@ sig
   type v 
   type graph 
 
+  (* empty graph *)
+  val empty: graph 
   (* add a vertex to the graph *)
   val addVertex : v -> graph -> graph 
 
@@ -43,7 +45,8 @@ module MakeGraph(V : VERTEX) : (GRAPH with type v = V.t) =
 struct 
   type v = V.t 
 
-  type graph = (V.t * V.t list) list 
+  type graph = (V.t * V.t list) list
+  let empty : graph = [] 
 
   let addVertex _ _ = failwith "not yet implemented" 
   let addEdge _ _ = failwith "not yet implemented"
