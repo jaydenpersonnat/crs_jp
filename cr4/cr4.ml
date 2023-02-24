@@ -15,6 +15,8 @@ module type GRAPH =
 sig
   type v 
   type graph 
+  exception VertexDoesNotExist
+
 
   (* empty graph *)
   val empty: graph 
@@ -43,6 +45,7 @@ end ;;
 
 module MakeGraph(V : VERTEX) : (GRAPH with type v = V.t) = 
 struct 
+  exception VertexDoesNotExist
   type v = V.t 
 
   type graph = (V.t * V.t list) list
