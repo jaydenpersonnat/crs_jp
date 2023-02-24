@@ -24,10 +24,10 @@ sig
   val addVertex : v -> graph -> graph 
 
   (* add a directed edge from a vertex u to a vertex v *)
-  val addEdge : v -> v -> graph 
+  val addEdge : v -> v -> graph -> graph 
 
   (* Return the neighbors of a vertex `v` *)
-  val neighbors : v -> v list 
+  val neighbors : v -> graph -> v list 
 
   (* Return true if and only if the graph is a diagraph *)
   val is_directed : graph -> bool 
@@ -36,10 +36,10 @@ sig
   val count_edges : graph -> int 
 
   (* Return the in-degree (i.e. the number of edges) that come into v *)
-  val in_degree : v -> int 
+  val in_degree : v -> graph -> int 
 
   (* Return the out-degree *)
-  val out_degree : v -> int 
+  val out_degree : v -> graph -> int 
 
 end ;; 
 
@@ -60,4 +60,3 @@ struct
   let out_degree _ = failwith "not yet implemented"
   
 end ;;
-
