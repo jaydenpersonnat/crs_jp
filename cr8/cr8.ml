@@ -13,6 +13,7 @@ class type counter_interface =
     1. method to obtain student's ID, class year, house, and concentration, GPA (individiually)
       i.e. this method should take in a field, and then return a value 
     2. method that returns a record containing all of the student's information 
+    3. An update method that takes in a field and changes it to new value 
 *)
 
 
