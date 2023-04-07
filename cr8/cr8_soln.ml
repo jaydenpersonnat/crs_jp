@@ -16,16 +16,81 @@ class type counter_interface =
     3. An update method that takes in a field and changes it to new value 
 *)
 
+type field = 
+  | ID
+  | YEAR 
+  | HOUSE 
+  | CONCENTRATION 
+  | GPA  
+;;
 
-(* Write a class interface and definition for a Bank class 
+
+
+type student_info = {id : string; year: string; house : string; concentration : string; gpa: string} ;;
+
+class type student_interface = 
+object 
+  method get : field -> string
+  method get_all : student_info 
+  method update : field -> string -> unit 
+
+end ;; 
+
+class student (id_init : string) (year_init : string) (house_init : string) (concentration_init : string) (gpa_init : string) : student_interface = 
+object 
+  val mutable id = id_init 
+  val mutable house = house_init 
+  val mutable concentration = concentration_init 
+  val mutable gpa = gpa_init 
+  val mutable year = year_init  
+
+  method get (f : field) : 'a = 
+    match f with 
+    | ID -> id
+    | YEAR -> year
+    | HOUSE -> house
+    | CONCENTRATION -> concentration
+    | GPA ->  gpa 
+
+  method get_all = 
+    {id=id; house=house; year=year; concentration=concentration; gpa=gpa}
+
+  method update (f : field) (v: 'a) : unit = 
+    match f with 
+    | ID -> id <- v 
+    | YEAR -> year <- v 
+    | HOUSE -> house <- v 
+    | CONCENTRATION -> concentration <- v 
+    | GPA -> gpa <- v
+ 
+end ;; 
+
+(* Write a class interface and definition for a account class 
   A bank has a series of accounts that have an ID and balance. At the minimum, 
   define methods to:
     1. obtain the id of the bank account 
     2. obtain the current balance of a bank account 
-    3. width draw money 
+    3. widthdraw money 
     4. deposit money 
 *)
+class type account_interface = 
+object
+  method get_id : string 
+  method get_balance : float 
+  method widthdraw : float -> unit 
+  method deposit : float -> unit
+end 
 
+class account (id : string) (balance_init : float) : account_interface =
+object 
+  val id = id 
+  val mutable balance = balance_init
+
+  method get_id = id 
+  method get_balance = balance 
+  method widthdraw amount = balance <- max (balance -. amount) 0.
+  method deposit amount = balance <- balance +. amount 
+end ;; 
 
 (* 
 Above is a class type for a “counter” object that maintains an integer state 
